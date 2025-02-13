@@ -90,13 +90,13 @@ export function FindCars() {
                   const startIndex =
                     Math.floor(index % (carImages.length / 3)) * 3;
                   const imageIndex = startIndex + offset;
-                  // console.log("Car ID:", car.id);
-                  // console.log("Start Index:", startIndex);
-                  // console.log("Image Index:", imageIndex);
+
+                  const normalizedImageIndex = imageIndex % carImages.length;
+
                   return (
                     <div key={offset} className="size-full bg-gray-200">
                       <img
-                        src={carImages[imageIndex]}
+                        src={carImages[normalizedImageIndex]}
                         alt={`${car.car_brand_code} ${
                           car.car_model_code
                         } - 圖片 ${offset + 1}`}
@@ -107,39 +107,7 @@ export function FindCars() {
                 })}
               </Carousel>
             </div>
-            {/* <Card key={car.id} className="h-[calc(100%-24rem)]">
-              <div className="flex h-full flex-col justify-between">
-                <div>
-                  <h3 className="text-xl font-semibold">
-                    {car.car_brand_code} {car.car_model_code}
-                  </h3>
-                  <div className="mt-2 space-y-2">
-                    <div className="text-base text-gray-600">
-                      {car.manufactured_at} 年 ｜ {car.is_new_name}
-                    </div>
-                    <div className="text-base text-gray-600">規格 : </div>
-                    <div className="font-medium">{car.equipment}</div>
-                  </div>
-                </div>
-              </div>
 
-              <div className="mt-4">
-                <p className="text-lg font-bold">
-                  $ {car.price_new?.toLocaleString()} 萬
-                </p>
-              </div>
-
-              <Button
-                color="info"
-                onClick={() => {
-                  setSelectedCar(car);
-                  setShowDetailModal(true);
-                }}
-                className="mt-4 w-full"
-              >
-                查看詳情
-              </Button>
-            </Card> */}
             <Card key={car.id} className="h-[calc(100%-24rem)]">
               <div className="flex h-full flex-col justify-between">
                 <div>
